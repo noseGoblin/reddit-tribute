@@ -1,12 +1,20 @@
 import Image from 'next/image';
 import React from 'react';
 import {
-  BeakerIcon,
   ChevronDownIcon,
   HomeIcon,
+  Bars3Icon,
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/solid';
-import { StarIcon } from '@heroicons/react/24/outline';
+import {
+  BellIcon,
+  ChatBubbleOvalLeftEllipsisIcon,
+  GlobeEuropeAfricaIcon,
+  PlusIcon,
+  SparklesIcon,
+  MegaphoneIcon,
+  VideoCameraIcon,
+} from '@heroicons/react/24/outline';
 
 function Header() {
   return (
