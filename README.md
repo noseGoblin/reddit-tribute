@@ -1,7 +1,9 @@
 <<<<<<< HEAD
+
 # reddit-tribute
-Reddit clone built in Next.js with GraphQL &amp; SQL backend, Tailwind CSS, and deployed on Vercel.
-=======
+
+# Reddit clone built in Next.js with GraphQL &amp; SQL backend, Tailwind CSS, and deployed on Vercel.
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
@@ -29,4 +31,5 @@ pnpm create next-app --example with-tailwindcss with-tailwindcss-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
->>>>>>> 3045bf7 (first commit)
+
+> > > > > > > 3045bf7 (first commit)
