@@ -15,6 +15,7 @@ import {
   MegaphoneIcon,
   VideoCameraIcon,
 } from '@heroicons/react/24/outline';
+import { signIn } from 'next-auth/react';
 
 function Header() {
   return (
@@ -59,7 +60,10 @@ function Header() {
       </div>
 
       {/* Sign in/out button */}
-      <div className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex'>
+      <div
+        onClick={() => signIn()}
+        className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex'
+      >
         <div className='relative h-5 w-5 flex-shrink-0'>
           <Image
             objectFit='contain'
