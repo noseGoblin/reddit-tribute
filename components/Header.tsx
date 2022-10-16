@@ -57,6 +57,20 @@ function Header() {
       <div className='ml-5 flex items-center lg:hidden'>
         <Bars3Icon className='icon' />
       </div>
+
+      {/* Sign in/out button */}
+      <div className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex'>
+        <div className='relative h-5 w-5 flex-shrink-0'>
+          <Image
+            objectFit='contain'
+            src='https://links.papareact.com/23l'
+            layout='fill'
+            alt=''
+          />
+        </div>
+
+        <p className='text-gray-400'>Sing In</p>
+      </div>
     </div>
   );
 }
