@@ -15,9 +15,11 @@ import {
   MegaphoneIcon,
   VideoCameraIcon,
 } from '@heroicons/react/24/outline';
-import { signIn } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 function Header() {
+  const { data: session } = useSession();
+
   return (
     <div className='sticky top-0 z-50 flex bg-white px-4 py-2 shadow-sm'>
       <div className='relative h-10 w-20 flex-shrink-0'>
@@ -60,21 +62,39 @@ function Header() {
       </div>
 
       {/* Sign in/out button */}
-      <div
-        onClick={() => signIn()}
-        className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex'
-      >
-        <div className='relative h-5 w-5 flex-shrink-0'>
-          <Image
-            objectFit='contain'
-            src='https://links.papareact.com/23l'
-            layout='fill'
-            alt=''
-          />
-        </div>
+      {session ? (
+        <div
+          onClick={() => signOut()}
+          className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex'
+        >
+          <div className='relative h-5 w-5 flex-shrink-0'>
+            <Image
+              objectFit='contain'
+              src='https://links.papareact.com/23l'
+              layout='fill'
+              alt=''
+            />
+          </div>
 
-        <p className='text-gray-400'>Sing In</p>
-      </div>
+          <p className='text-gray-400'>Sign Out</p>
+        </div>
+      ) : (
+        <div
+          onClick={() => signIn()}
+          className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex'
+        >
+          <div className='relative h-5 w-5 flex-shrink-0'>
+            <Image
+              objectFit='contain'
+              src='https://links.papareact.com/23l'
+              layout='fill'
+              alt=''
+            />
+          </div>
+
+          <p className='text-gray-400'>Sign In</p>
+        </div>
+      )}
     </div>
   );
 }
