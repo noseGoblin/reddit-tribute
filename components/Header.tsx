@@ -4,6 +4,7 @@ import {
   BeakerIcon,
   ChevronDownIcon,
   HomeIcon,
+  MagnifyingGlassIcon,
 } from '@heroicons/react/24/solid';
 import { StarIcon } from '@heroicons/react/24/outline';
 
@@ -23,6 +24,17 @@ function Header() {
         <p className='ml-2 hidden flex-1'>Home</p>
         <ChevronDownIcon className='h-5 w-5' />
       </div>
+
+      {/* Search box */}
+      <form className='flex flex-1 items-center space-x-2 rounded-sm border border-gray-200 bg-gray-100 px-3 py-1'>
+        <MagnifyingGlassIcon className='h-6 w-6 text-gray-400' />
+        <input
+          className='flex-1 bg-transparent outline-none'
+          type='text'
+          placeholder='Search Reddit'
+        />
+        <button type='submit' hidden />
+      </form>
     </div>
   );
 }
