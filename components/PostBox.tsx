@@ -62,7 +62,7 @@ function PostBox() {
             <p className='min-w-[90px]'>Subreddit:</p>
             <input
               className='m-2 flex-1 bg-blue-50 p-2 outline-none'
-              {...register('subreddit')}
+              {...register('subreddit', { required: true })}
               type='text'
               placeholder='i.e. reactjs'
             />
@@ -79,7 +79,29 @@ function PostBox() {
               />
             </div>
           )}
+
+          {/* Errors */}
+          {Object.keys(errors).length > 0 && (
+            <div className='space-y-2 p-2 text-red-500'>
+              {errors.postTitle?.type === 'required' && (
+                <p>- A Post Title is required</p>
+              )}
+
+              {errors.subreddit?.type === 'required' && (
+                <p>- A Subreddit is required</p>
+              )}
+            </div>
+          )}
         </div>
+      )}
+
+      {!!watch('postTitle') && (
+        <button
+          type='submit'
+          className='w-full rounded-full bg-blue-400 p-2 text-white'
+        >
+          Create Post
+        </button>
       )}
     </form>
   );
