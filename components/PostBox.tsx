@@ -5,6 +5,8 @@ import { LinkIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../graphql/mutations';
+import client from '../apollo-client';
+import { GET_SUBREDDIT_BY_TOPIC } from '../graphql/queries';
 
 type FormData = {
   postTitle: string;
@@ -27,6 +29,18 @@ function PostBox() {
 
   const onSubmit = handleSubmit(async (formData) => {
     console.log(formData);
+
+    try {
+      // Query for subreddit topic...
+      const {
+        data: { getSubredditListByTopic },
+      } = await client.query({
+        query: GET_SUBREDDIT_BY_TOPIC,
+        variables: {
+          topic: formData.subreddit,
+        },
+      });
+    } catch (error) {}
   });
 
   return (

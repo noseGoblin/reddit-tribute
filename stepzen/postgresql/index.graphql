@@ -100,6 +100,17 @@ type Query {
       """
       configuration: "postgresql_config"
     )
+
+  getSubredditListByTopic(topic: String!): [Subreddit]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      select * from "subreddit" where "topic" = $1
+      """
+      configuration: "postgresql_config"
+    )
+
   getSubredditList: [Subreddit]
     @dbquery(
       type: "postgresql"
