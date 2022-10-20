@@ -74,6 +74,24 @@ function PostBox() {
         console.log('New post added!', newPost);
       } else {
         // use existing subreddit...
+        console.log('Using existing subreddit!');
+        console.log(getSubredditListByTopic);
+
+        const image = formData.postImage || '';
+
+        const {
+          data: { insertPost: newPost },
+        } = await addPost({
+          variables: {
+            body: formData.postBody,
+            image: image,
+            subreddit_id: getSubredditListByTopic[0].id,
+            title: formData.postTitle,
+            username: session?.user?.name,
+          },
+        });
+
+        console.log('New post added!', newPost);
       }
     } catch (error) {}
   });
