@@ -8,7 +8,7 @@ function PostBox() {
   return (
     <form>
       <div className='flex items-center space-x-3'>
-        <Avatar large />
+        <Avatar />
 
         <input
           disabled={!session}
