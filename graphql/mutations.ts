@@ -1,4 +1,3 @@
-import { Image } from 'next/image';
 import { gql } from '@apollo/client';
 
 export const ADD_POST = gql`
