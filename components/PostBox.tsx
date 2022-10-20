@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from './Avatar';
 import { LinkIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import { useForm } from 'react-hook-form';
@@ -13,6 +13,7 @@ type FormData = {
 
 function PostBox() {
   const { data: session } = useSession();
+  const [imageBoxOpen, setImageBoxOpen] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -35,7 +36,12 @@ function PostBox() {
           }
         />
 
-        <PhotoIcon className={`h-6 cursor-pointer text-gray-300`} />
+        <PhotoIcon
+          onClick={() => setImageBoxOpen(!imageBoxOpen)}
+          className={`h-6 cursor-pointer text-gray-300 ${
+            imageBoxOpen && 'text-blue-300'
+          }`}
+        />
         <LinkIcon className='h-6 text-gray-300' />
       </div>
 
@@ -61,6 +67,18 @@ function PostBox() {
               placeholder='i.e. reactjs'
             />
           </div>
+
+          {imageBoxOpen && (
+            <div className='flex items-center px-2'>
+              <p className='min-w-[90px]'>Image URL:</p>
+              <input
+                className='m-2 flex-1 bg-blue-50 p-2 outline-none'
+                {...register('postImage')}
+                type='text'
+                placeholder='Optional...'
+              />
+            </div>
+          )}
         </div>
       )}
     </form>
