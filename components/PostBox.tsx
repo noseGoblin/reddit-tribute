@@ -59,7 +59,7 @@ function PostBox() {
           },
         });
 
-        console.log('Createing post...', formData);
+        console.log('Creating post...', formData);
         const image = formData.postImage || '';
 
         const {
