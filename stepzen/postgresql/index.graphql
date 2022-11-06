@@ -106,7 +106,7 @@ type Query {
       type: "postgresql"
       schema: "public"
       query: """
-      select * from "subreddit" where "topic" = $1
+      select * from subreddit where topic = $1
       """
       configuration: "postgresql_config"
     )
