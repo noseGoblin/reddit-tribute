@@ -17,9 +17,9 @@ type Post {
   created_at: DateTime
   id: ID!
   image: String
-  subreddit: Subreddit
+  subreddit: [Subreddit]
     @materializer(
-      query: "getSubreddit"
+      query: "getSubredditListById"
       arguments: [{ name: "id", field: "subreddit_id" }]
     )
   subreddit_id: ID
@@ -57,6 +57,15 @@ type Query {
       type: "postgresql"
       schema: "public"
       table: "comment"
+      configuration: "postgresql_config"
+    )
+  getSubredditListById(id: ID!): [Subreddit]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      select * from subreddit where id = $1
+      """
       configuration: "postgresql_config"
     )
   getComment(id: ID!): Comment

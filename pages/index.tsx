@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import Feed from '../components/Feed';
 import PostBox from '../components/PostBox';
 
 const Home: NextPage = () => {
@@ -13,7 +14,10 @@ const Home: NextPage = () => {
       {/* PostBox */}
       <PostBox />
 
-      <div>{/* Feed */}</div>
+      <div>
+        {/* Feed */}
+        <Feed />
+      </div>
     </div>
   );
 };
