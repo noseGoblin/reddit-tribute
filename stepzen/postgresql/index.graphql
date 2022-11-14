@@ -108,14 +108,17 @@ type Query {
     @dbquery(
       type: "postgresql"
       schema: "public"
-      table: "post"
+      query: """
+      select * from "post"
+      order by "post"."created_at" desc
+      """
       configuration: "postgresql_config"
     )
   getPost(id: ID!): Post
     @dbquery(
       type: "postgresql"
       schema: "public"
-      table: "post"
+      query: "post"
       configuration: "postgresql_config"
     )
   getCommentUsingPost_id(id: ID!): [Comment]
