@@ -31,7 +31,7 @@ function Post({ post }: Props) {
           <Avatar seed={post.subreddit[0]?.topic} />
           <p>
             <span>r/{post.subreddit[0]?.topic}</span> • Posted by u/{' '}
-            {post.username} <TimeAgo data={post.created_at} />
+            {post.username} <TimeAgo date={post.created_at} />
           </p>
         </div>
         {/* Body */}
