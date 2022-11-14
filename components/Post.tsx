@@ -54,15 +54,15 @@ function Post({ post }: Props) {
           </div>
           <div className='postButtons'>
             <GiftIcon className='h-6 w-6' />
-            <p className=''>Award</p>
+            <p className='hidden sm:inline'>Award</p>
           </div>
           <div className='postButtons'>
             <ShareIcon className='h-6 w-6' />
-            <p className=''>Share</p>
+            <p className='hidden sm:inline'>Share</p>
           </div>
           <div className='postButtons'>
             <BookmarkIcon className='h-6 w-6' />
-            <p className=''>Save</p>
+            <p className='hidden sm:inline'>Save</p>
           </div>
           <div className='postButtons'>
             <EllipsisHorizontalIcon className='h-6 w-6' />
