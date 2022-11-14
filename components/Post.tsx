@@ -52,6 +52,21 @@ function Post({ post }: Props) {
             <ChatBubbleLeftEllipsisIcon className='h-6 w-6' />
             <p className=''>{post.comments.length} Comments</p>
           </div>
+          <div className='postButtons'>
+            <GiftIcon className='h-6 w-6' />
+            <p className=''>Award</p>
+          </div>
+          <div className='postButtons'>
+            <ShareIcon className='h-6 w-6' />
+            <p className=''>Share</p>
+          </div>
+          <div className='postButtons'>
+            <BookmarkIcon className='h-6 w-6' />
+            <p className=''>Save</p>
+          </div>
+          <div className='postButtons'>
+            <EllipsisHorizontalIcon className='h-6 w-6' />
+          </div>
         </div>
       </div>
     </div>
