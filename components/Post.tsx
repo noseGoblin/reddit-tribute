@@ -47,6 +47,12 @@ function Post({ post }: Props) {
         <img className='w-full' src={post.image} alt='' />
 
         {/* Footer */}
+        <div className='flex space-x-4 text-gray-400'>
+          <div className='postButtons'>
+            <ChatBubbleLeftEllipsisIcon className='h-6 w-6' />
+            <p className=''>{post.comments.length} Comments</p>
+          </div>
+        </div>
       </div>
     </div>
   );
