@@ -26,7 +26,7 @@ function Post({ post }: Props) {
   const [vote, setVote] = useState<boolean>();
   const { data: session } = useSession();
 
-  const { data, loading } = useQuery(GET_ALL_VOTES_BY_POST_ID, {
+  const { data, loading, error } = useQuery(GET_ALL_VOTES_BY_POST_ID, {
     variables: {
       post_id: post?.id,
     },
@@ -47,13 +47,17 @@ function Post({ post }: Props) {
 
     console.log('voting...', isUpvote);
 
-    await addVote({
+    const {
+      data: { insertVote: newVote },
+    } = await addVote({
       variables: {
         post_id: post.id,
-        username: session.user?.name,
+        username: session?.user?.name,
         upvote: isUpvote,
       },
     });
+
+    console.log('PLACED VOTE:', data);
   };
 
   useEffect(() => {
@@ -82,12 +86,16 @@ function Post({ post }: Props) {
         <div className='flex flex-col items-center justify-start space-y-1 rounded-l-md bg-gray-50 p-4 text-gray-400'>
           <ArrowUpIcon
             onClick={() => upVote(true)}
-            className='voteButtons hover:text-red-400'
+            className={`voteButtons hover:text-blue-400 ${
+              vote && 'text-blue-400'
+            }`}
           />
           <p className='text-xs font-bold text-black'>0</p>
           <ArrowDownIcon
             onClick={() => upVote(false)}
-            className='voteButtons hover:text-blue-400'
+            className={`voteButtons hover:text-red-400 ${
+              vote === false && 'text-red-400'
+            }`}
           />
         </div>
 
