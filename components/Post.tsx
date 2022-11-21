@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -36,12 +36,37 @@ function Post({ post }: Props) {
     refetchQueries: [GET_ALL_VOTES_BY_POST_ID, 'getVotesByPostId'],
   });
 
-  const upVote = async (isUpVote: boolean) => {
+  const upVote = async (isUpvote: boolean) => {
     if (!session) {
       toast('❗ You need to sign in to Vote!');
       return;
     }
+
+    if (vote && isUpvote) return;
+    if (vote === false && !isUpvote) return;
+
+    console.log('voting...', isUpvote);
+
+    await addVote({
+      variables: {
+        post_id: post.id,
+        username: session.user?.name,
+        upvote: isUpvote,
+      },
+    });
   };
+
+  useEffect(() => {
+    const votes: Vote[] = data?.getVotesByPostId;
+
+    // Latest vote (as sorted by newely created, first in SQL query)
+    // Note: improve this by moving to original query
+    const vote = votes?.find(
+      (vote) => vote.username == session?.user?.name
+    )?.upvote;
+
+    setVote(vote);
+  }, [data]);
 
   if (!post)
     return (
