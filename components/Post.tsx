@@ -12,12 +12,23 @@ import Avatar from './Avatar';
 import TimeAgo from 'react-timeago';
 import Link from 'next/link';
 import { Jelly } from '@uiball/loaders';
+import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
 
 type Props = {
   post: Post;
 };
 
 function Post({ post }: Props) {
+  const { data: session } = useSession();
+
+  const upVote = async (isUpVote: boolean) => {
+    if (!session) {
+      toast('❗ You need to sign in to Vote!');
+      return;
+    }
+  };
+
   if (!post)
     return (
       <div className='flex w-full items-center justify-center p-10 text-xl'>
