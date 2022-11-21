@@ -4,7 +4,7 @@ export const ADD_COMMENT = gql`
   mutation MyMutation($post_id: ID!, $username: String!, $text: String!) {
     insertComment(post_id: $post_id, text: $text, username: $username) {
       id
-      topic
+      text
       created_at
       post_id
       username
