@@ -14,6 +14,9 @@ import Link from 'next/link';
 import { Jelly } from '@uiball/loaders';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_VOTE } from '../graphql/mutations';
+import { GET_ALL_VOTES_BY_POST_ID } from '../graphql/queries';
 
 type Props = {
   post: Post;
@@ -22,6 +25,16 @@ type Props = {
 function Post({ post }: Props) {
   const [vote, setVote] = useState<boolean>();
   const { data: session } = useSession();
+
+  const { data, loading } = useQuery(GET_ALL_VOTES_BY_POST_ID, {
+    variables: {
+      post_id: post?.id,
+    },
+  });
+
+  const [addVote] = useMutation(ADD_VOTE, {
+    refetchQueries: [GET_ALL_VOTES_BY_POST_ID, 'getVotesByPostId'],
+  });
 
   const upVote = async (isUpVote: boolean) => {
     if (!session) {
