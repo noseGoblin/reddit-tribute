@@ -1,9 +1,18 @@
+import { useQuery } from '@apollo/client';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Feed from '../components/Feed';
 import PostBox from '../components/PostBox';
+import { GET_SUBREDDITS_WITH_LIMIT } from '../graphql/queries';
 
 const Home: NextPage = () => {
+  const { data } = useQuery(GET_SUBREDDITS_WITH_LIMIT, {
+    variables: {
+      limit: 10,
+    },
+  });
+  const subreddits: Subreddit[] = data?.getSubredditListLimit;
+
   return (
     <div className='my-7 max-w-5xl mx-auto'>
       <Head>
