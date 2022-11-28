@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronUpIcon } from '@heroicons/react/outline';
 
 type Props = {
   topic: string;
