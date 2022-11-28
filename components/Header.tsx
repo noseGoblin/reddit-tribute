@@ -23,7 +23,7 @@ function Header() {
 
   return (
     <div className='sticky top-0 z-50 flex items-center bg-white px-4 py-2 shadow-sm'>
-      <div className='relative h-10 w-20 flex-shrink-0'>
+      <div className='relative h-10 w-20 flex-shrink-0 cursor-pointer'>
         <Link href='/'>
           <Image
             objectFit='contain'
@@ -33,10 +33,16 @@ function Header() {
         </Link>
       </div>
 
-      <div className='mx-7 flex items-center xl:min-w-[300px]'>
-        <HomeIcon className='h-5 w-5' />
-        <p className='ml-2 hidden flex-1'>Home</p>
-        <ChevronDownIcon className='h-5 w-5' />
+      <div className='mx-7 flex items-center xl:min-w-[300px] cursor-pointer'>
+        <Link href='/'>
+          <HomeIcon className='h-5 w-5' />
+        </Link>
+        <Link href='/'>
+          <p className='ml-2 hidden sm:inline flex-1'>Home</p>
+        </Link>
+        <Link href='/'>
+          <ChevronDownIcon className='h-5 w-5' />
+        </Link>
       </div>
 
       {/* Search box */}
@@ -68,7 +74,7 @@ function Header() {
       {session ? (
         <div
           onClick={() => signOut()}
-          className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex'
+          className='hidden curson-point items-center space-x-2 border border-gray-100 p-2 lg:flex cursor-pointer'
         >
           <div className='relative h-5 w-5 flex-shrink-0'>
             <Image
